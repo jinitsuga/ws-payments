@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CompanyForm } from "./FormSteps";
+import { CompanyForm, ShowcaseForm } from "./FormSteps";
 
 // All of the form logic goes in this component
 export default function MainForm() {
@@ -11,6 +11,10 @@ export default function MainForm() {
     repEmail: "",
     category: "",
     companySite: "",
+    // Showcase data
+    showcase: "",
+    size: 0,
+    carte: [],
   });
   const [formSteps, setFormSteps] = useState<number>(0);
 
@@ -37,6 +41,9 @@ export default function MainForm() {
       <form className="flex flex-col gap-2">
         {formSteps == 0 && (
           <CompanyForm setter={setFormData} formData={formData} />
+        )}
+        {formSteps == 1 && (
+          <ShowcaseForm setter={setFormData} formData={formData} />
         )}
       </form>
       <ul className="flex justify-between  p-2">
