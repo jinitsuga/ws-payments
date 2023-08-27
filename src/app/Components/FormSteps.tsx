@@ -47,6 +47,15 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
         formData={formData}
         req
       />
+      <Input
+        inputName="companySite"
+        labelText="Website / social media:"
+        inputType="text"
+        placeholder="https://www.nike.com/"
+        setter={setter}
+        formData={formData}
+        req
+      />
     </>
   );
 };

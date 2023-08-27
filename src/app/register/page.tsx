@@ -9,7 +9,7 @@ export default function Register() {
           Wedding Salon
         </span>
       </h2>
-      <section className="flex shadow-md shadow-ws-green gap-2 h-[400px] bg-white rounded-lg">
+      <section className="flex shadow-md shadow-ws-green gap-2 bg-white rounded-lg">
         <div className="rounded  w-3/4 p-4">
           <MainForm />
         </div>

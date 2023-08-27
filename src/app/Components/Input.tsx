@@ -27,7 +27,7 @@ export default function Input({
     <label className="flex flex-col text-xl gap-1" htmlFor={inputName}>
       {labelText}
       <input
-        className="rounded bg-stone-200 max-w-[70%] p-2 outline-ws-green"
+        className="rounded bg-stone-200 max-w-[75%] p-2 outline-ws-green"
         required={req}
         onChange={(e) => {
           updateData(e);
