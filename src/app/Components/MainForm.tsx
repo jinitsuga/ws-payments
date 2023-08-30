@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CompanyForm, ShowcaseForm } from "./FormSteps";
+import { CompanyForm, ShowcaseForm, BillingForm } from "./FormSteps";
 
 // All of the form logic goes in this component
 export default function MainForm() {
@@ -44,6 +44,9 @@ export default function MainForm() {
         )}
         {formSteps == 1 && (
           <ShowcaseForm setter={setFormData} formData={formData} />
+        )}
+        {formSteps == 2 && (
+          <BillingForm setter={setFormData} formData={formData} />
         )}
       </form>
       <ul className="flex justify-between  p-2">

@@ -61,7 +61,10 @@ export const RadioInput = ({
   formData,
 }: RadioTypes) => {
   const updateData = (e: React.FormEvent<HTMLInputElement>) => {
-    setter({ ...formData, [inputName]: e.currentTarget.value });
+    setter({
+      ...formData,
+      [inputName]: { name: id, value: Number(e.currentTarget.value) },
+    });
   };
   return (
     <div className="flex text-xl">
@@ -97,22 +100,36 @@ export const CheckboxInput = ({
     e: React.FormEvent<HTMLInputElement>,
     checked: boolean
   ) => {
-    if (formData[inputName] == undefined && checked) {
-      setter({ ...formData, [inputName]: Number(e.currentTarget.value) });
-    } else if (formData[inputName] !== undefined && checked) {
+    if (formData[inputName].length == 0) {
       setter({
         ...formData,
-        [inputName]:
-          Number(formData[inputName]) + Number(e.currentTarget.value),
+        [inputName]: [
+          ...formData[inputName],
+          { name: id, value: Number(e.currentTarget.value) },
+        ],
       });
-    } else if (formData[inputName] !== undefined && !checked) {
+    } else if (!formData[inputName].find((item: any) => item.name === id)) {
+      console.log(id);
       setter({
         ...formData,
-        [inputName]:
-          Number(formData[inputName]) - Number(e.currentTarget.value),
+        [inputName]: [
+          ...formData[inputName],
+          { name: id, value: Number(e.currentTarget.value) },
+        ],
+      });
+    } else {
+      const itemIndex = formData[inputName].findIndex(
+        (item: any) => item.name == id
+      );
+      const newCarte = formData[inputName].toSpliced(itemIndex, 1);
+      console.log(newCarte);
+      setter({
+        ...formData,
+        [inputName]: newCarte,
       });
     }
   };
+
   return (
     <div className="flex text-lg">
       <label

@@ -98,7 +98,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
       </label>
       <fieldset className="text-xl mt-2 flex-wrap ">
         Exhibitor space to purchase:
-        <div className="flex flex-wrap gap-6 mt-2 max-w-[445px]">
+        <div className="flex flex-wrap gap-4 mt-2">
           <RadioInput
             formData={formData}
             setter={setter}
@@ -212,4 +212,49 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
       </fieldset>
     </>
   );
+};
+export const BillingForm = ({ setter, formData }: FormProps) => {
+  return (
+    <>
+      <h3>Billing information</h3>
+      <Input
+        formData={formData}
+        inputName="billingName"
+        inputType="text"
+        labelText="Billing contact name"
+        req
+        setter={setter}
+        placeholder="Charles"
+      />
+      <Input
+        formData={formData}
+        inputName="billingAddress"
+        inputType="text"
+        labelText="Billing address"
+        req
+        setter={setter}
+      />
+      <Input
+        formData={formData}
+        inputName="billingEmail"
+        inputType="email"
+        labelText="Billing contact email"
+        req
+        setter={setter}
+        placeholder="jane@google.com"
+      />
+      <Input
+        formData={formData}
+        inputName="billingPhone"
+        inputType="tel"
+        labelText="Billing contact phone"
+        req
+        setter={setter}
+        placeholder="+1 999 451 924"
+      />
+    </>
+  );
+};
+export const PaymentForm = ({}) => {
+  return <></>;
 };
