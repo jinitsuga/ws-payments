@@ -17,7 +17,6 @@ export default function RootLayout({
 }) {
   return (
     <html className="h-[100%]" lang="en">
-      {/* <Script src="https://sandbox.web.squarecdn.com/v1/square.js" /> */}
       <body className={inter.className + " h-full"}>{children}</body>
     </html>
   );

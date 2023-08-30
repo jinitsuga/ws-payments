@@ -1,7 +1,5 @@
 import MainForm from "../Components/MainForm";
 
-console.log(process.env.SQUARE_SECRET);
-
 export default function Register() {
   return (
     <main className="flex flex-col gap-10 bg-stone-200 text-2xl items-center justify-center min-h-full">

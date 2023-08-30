@@ -1,6 +1,13 @@
 "use client";
-import React from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import Input, { RadioInput, CheckboxInput } from "./Input";
+import Script from "next/script";
+
+declare global {
+  interface Window {
+    Square: any;
+  }
+}
 
 type FormProps = {
   setter: Function;
@@ -213,6 +220,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
     </>
   );
 };
+
 export const BillingForm = ({ setter, formData }: FormProps) => {
   return (
     <>
@@ -255,6 +263,58 @@ export const BillingForm = ({ setter, formData }: FormProps) => {
     </>
   );
 };
-export const PaymentForm = ({}) => {
-  return <></>;
+
+export const PaymentForm = ({ formData }: any) => {
+  const [isSquareLoaded, setIsSquareLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.Square && !isSquareLoaded) {
+      initSquare();
+      setIsSquareLoaded(true);
+    }
+    console.log("load");
+  }, [isSquareLoaded]);
+
+  async function initSquare() {
+    const payments = window.Square.payments(
+      process.env.NEXT_PUBLIC_SQUARE_CLIENT,
+      process.env.NEXT_PUBLIC_SQUARE_LOCATION
+    );
+    const card = await payments.card();
+    card.attach("#card");
+  }
+
+  const cartePrice = () => {
+    let carteTotal = 0;
+
+    formData.carte.map((item: any) => {
+      carteTotal = carteTotal + item.value;
+    });
+    return carteTotal;
+  };
+
+  const total = formData.size.value + cartePrice();
+  console.log(total);
+  return (
+    //lol qwewqqweqweqwweEWWEas
+    <>
+      <Script
+        onLoad={() => {
+          initSquare();
+          setIsSquareLoaded(true);
+        }}
+        src="https://sandbox.web.squarecdn.com/v1/square.js"
+      />
+      <h4 className="text-xl mt-2">Card details</h4>
+      <div className="mt-4" id="card"></div>
+      <span className="self-center mb-4">Total: {total}</span>
+      <button
+        className="p-4 font-bold rounded bg-teal-500 text-3xl text-center w-3/4 self-center mb-4"
+        onClick={(e: SyntheticEvent) => e.preventDefault()}
+        type="button"
+      >
+        Pay
+      </button>
+    </>
+  );
 };
