@@ -164,8 +164,8 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
             formData={formData}
             setter={setter}
             inputName="carte"
-            labelText="Dedicated email blast: $1"
-            value={1}
+            labelText="Dedicated email blast: $995"
+            value={995}
             id="emailBlast"
           />
           <CheckboxInput
