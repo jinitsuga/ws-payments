@@ -2,6 +2,7 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import Input, { RadioInput, CheckboxInput } from "./Input";
 import Script from "next/script";
+import { cartePrice } from "@/utils/utils";
 
 declare global {
   interface Window {
@@ -110,8 +111,8 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
             formData={formData}
             setter={setter}
             inputName="size"
-            labelText="Artist: $1750"
-            value={1750}
+            labelText="Artist: $5"
+            value={5}
             id="artist"
           />
           <RadioInput
@@ -163,8 +164,8 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
             formData={formData}
             setter={setter}
             inputName="carte"
-            labelText="Dedicated email blast: $995"
-            value={995}
+            labelText="Dedicated email blast: $1"
+            value={1}
             id="emailBlast"
           />
           <CheckboxInput
@@ -266,6 +267,7 @@ export const BillingForm = ({ setter, formData }: FormProps) => {
 
 export const PaymentForm = ({ formData }: any) => {
   const [isSquareLoaded, setIsSquareLoaded] = useState<boolean>(false);
+  const [card, setCard] = useState<any>(null);
 
   useEffect(() => {
     if (window.Square && !isSquareLoaded) {
@@ -282,18 +284,24 @@ export const PaymentForm = ({ formData }: any) => {
     );
     const card = await payments.card();
     card.attach("#card");
+    setCard(card);
   }
 
-  const cartePrice = () => {
-    let carteTotal = 0;
-
-    formData.carte.map((item: any) => {
-      carteTotal = carteTotal + item.value;
-    });
-    return carteTotal;
+  const handlePayment = async () => {
+    const tokenResult = await card?.tokenize();
+    if (tokenResult.status === "OK") {
+      const token = tokenResult.token;
+      const response = await fetch("/api/pay", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formData, token }),
+      });
+    } else {
+      console.error(tokenResult.errors);
+    }
   };
 
-  const total = formData.size.value + cartePrice();
+  const total = formData.size.value + cartePrice(formData);
   console.log(total);
   return (
     //lol qwewqqweqweqwweEWWEas
@@ -307,10 +315,13 @@ export const PaymentForm = ({ formData }: any) => {
       />
       <h4 className="text-xl mt-2">Card details</h4>
       <div className="mt-4" id="card"></div>
-      <span className="self-center mb-4">Total: {total}</span>
+      <span className="self-center mb-4">Total: ${total}</span>
       <button
         className="p-4 font-bold rounded bg-teal-500 text-3xl text-center w-3/4 self-center mb-4"
-        onClick={(e: SyntheticEvent) => e.preventDefault()}
+        onClick={(e: SyntheticEvent) => {
+          e.preventDefault();
+          handlePayment();
+        }}
         type="button"
       >
         Pay
