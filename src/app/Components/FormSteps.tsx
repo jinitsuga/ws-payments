@@ -3,6 +3,8 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import Input, { RadioInput, CheckboxInput } from "./Input";
 import Script from "next/script";
 import { cartePrice } from "@/utils/utils";
+import { carteOptions } from "@/utils/carteOptions";
+import { sizes } from "@/utils/sizes";
 
 declare global {
   interface Window {
@@ -69,6 +71,35 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
 };
 
 export const ShowcaseForm = ({ setter, formData }: FormProps) => {
+  const alacarteOptions = carteOptions.map((option, id) => {
+    return (
+      <CheckboxInput
+        formData={formData}
+        setter={setter}
+        inputName="carte"
+        labelText={option.name}
+        key={id}
+        id={option.name}
+        value={option.value}
+      />
+    );
+  });
+
+  const exhibitorSizes = sizes.map((option, id) => {
+    return (
+      <RadioInput
+        formData={formData}
+        setter={setter}
+        id={option.name}
+        key={id}
+        inputName="size"
+        labelText={option.name}
+        value={option.value}
+        req
+      />
+    );
+  });
+
   return (
     <>
       <h2 className="mb-2 text-3xl">Showcase information</h2>
@@ -104,119 +135,15 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
           </option>
         </select>
       </label>
+
       <fieldset className="text-xl mt-2 flex-wrap ">
         Exhibitor space to purchase:
-        <div className="flex flex-wrap gap-4 mt-2">
-          <RadioInput
-            formData={formData}
-            setter={setter}
-            inputName="size"
-            labelText="Artist: $5"
-            value={5}
-            id="artist"
-          />
-          <RadioInput
-            formData={formData}
-            setter={setter}
-            inputName="size"
-            labelText='36" table: $2950'
-            value={2950}
-            id="36inch"
-          />
-          <RadioInput
-            formData={formData}
-            setter={setter}
-            inputName="size"
-            labelText="4FT table: $3950"
-            value={3950}
-            id="4ft"
-          />
-          <RadioInput
-            formData={formData}
-            setter={setter}
-            inputName="size"
-            labelText="6FT booth: $5490"
-            value={5490}
-            id="6ft"
-          />
-          <RadioInput
-            formData={formData}
-            setter={setter}
-            inputName="size"
-            labelText="9FT booth: $8240"
-            value={8240}
-            id="9ft"
-          />
-          <RadioInput
-            formData={formData}
-            setter={setter}
-            inputName="size"
-            labelText="12FT booth: $10715"
-            value={10715}
-            id="12ft"
-          />
-        </div>
+        <div className="flex flex-wrap gap-4 mt-2">{exhibitorSizes}</div>
       </fieldset>
+
       <fieldset className="text-xl mt-2 flex-wrap">
         A la carte options:
-        <div>
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Dedicated email blast: $995"
-            value={995}
-            id="emailBlast"
-          />
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Sponsored blog post: $995"
-            value={995}
-            id="blogPost"
-          />
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Reception table: $1200"
-            value={1200}
-            id="reception"
-          />
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Power: $75"
-            value={75}
-            id="power"
-          />
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Internet: $25"
-            value={25}
-            id="internet"
-          />
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Social posts: $495"
-            value={495}
-            id="social"
-          />
-          <CheckboxInput
-            formData={formData}
-            setter={setter}
-            inputName="carte"
-            labelText="Swag bag inclusion/Distribution table: $495"
-            value={495}
-            id="swag"
-          />
-        </div>
+        <div>{alacarteOptions}</div>
       </fieldset>
     </>
   );

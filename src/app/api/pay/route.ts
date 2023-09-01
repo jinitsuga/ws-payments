@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { Client, Environment, ApiError } from "square";
+import { Client, Environment } from "square";
 import { cartePrice } from "@/utils/utils";
 
 const client = new Client({
