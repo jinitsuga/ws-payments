@@ -136,14 +136,14 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
         </select>
       </label>
 
-      <fieldset className="text-xl mt-2 flex-wrap ">
+      <fieldset className="text-xl  flex-wrap ">
         Exhibitor space to purchase:
-        <div className="flex flex-wrap gap-4 mt-2">{exhibitorSizes}</div>
+        <div className="flex flex-wrap gap-4 my-4">{exhibitorSizes}</div>
       </fieldset>
 
       <fieldset className="text-xl mt-2 flex-wrap">
         A la carte options:
-        <div>{alacarteOptions}</div>
+        <div className="mt-4">{alacarteOptions}</div>
       </fieldset>
     </>
   );
@@ -243,7 +243,7 @@ export const PaymentForm = ({ formData }: any) => {
       <div className="mt-4" id="card"></div>
       <span className="self-center mb-4">Total: ${total}</span>
       <button
-        className="p-4 font-bold rounded bg-teal-500 text-3xl text-center w-3/4 self-center mb-4"
+        className="p-4 font-bold rounded bg-teal-500 text-3xl text-center w-3/4 self-center mb-4 hover:text-ws-pink hover:bg-teal-400"
         onClick={(e: SyntheticEvent) => {
           e.preventDefault();
           handlePayment();
