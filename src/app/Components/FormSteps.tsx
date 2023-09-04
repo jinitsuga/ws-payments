@@ -243,7 +243,7 @@ export const PaymentForm = ({ formData }: any) => {
       <div className="mt-4" id="card"></div>
       <span className="self-center mb-4">Total: ${total}</span>
       <button
-        className="p-4 font-bold rounded bg-teal-500 text-3xl text-center w-3/4 self-center mb-4 hover:text-ws-pink hover:bg-teal-400"
+        className="p-4 font-bold rounded active:scale-110 active:bg-ws-pink active:text-black bg-teal-500 text-3xl text-center w-3/4 self-center mb-4 hover:text-ws-pink hover:bg-teal-400"
         onClick={(e: SyntheticEvent) => {
           e.preventDefault();
           handlePayment();
