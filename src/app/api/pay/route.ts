@@ -45,6 +45,7 @@ export async function POST(req: NextRequest) {
 
   if (!sizeCheck || !carteCheck) {
     console.log("information toyed with");
+    return;
   }
 
   const totalPayment = cartePrice(formData) + formData.size.value;

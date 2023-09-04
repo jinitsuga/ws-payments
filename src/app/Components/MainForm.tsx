@@ -28,6 +28,7 @@ export default function MainForm() {
   const [formSteps, setFormSteps] = useState<number>(0);
 
   console.log(formData);
+  console.log(formSteps);
 
   // Validation will come after fields per step are settled in stone
 
@@ -63,6 +64,7 @@ export default function MainForm() {
       <ul className="flex justify-between  p-2">
         <li className={`${formSteps > 0 ? "block" : "hidden"}`}>
           <button
+            className="border-2 border-black m-2 hover:text-ws-pink hover:border-ws-pink rounded p-2"
             onClick={() => {
               moveSteps("back");
             }}
@@ -70,8 +72,9 @@ export default function MainForm() {
             Back
           </button>
         </li>
-        <li>
+        <li className={`${formSteps >= 2 ? "hidden" : "block"}`}>
           <button
+            className="border-2 border-black m-2 hover:text-ws-pink hover:border-ws-pink rounded p-2"
             onClick={() => {
               moveSteps("forward");
             }}
