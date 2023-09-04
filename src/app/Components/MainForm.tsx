@@ -64,7 +64,8 @@ export default function MainForm() {
       <ul className="flex justify-between  p-2">
         <li className={`${formSteps > 0 ? "block" : "hidden"}`}>
           <button
-            className="border-2 border-black m-2 hover:text-ws-pink hover:border-ws-pink rounded p-2"
+            className="border-2 border-black m-2 hover:text-ws-pink active:text-ws-green
+            active:border-ws-green hover:border-ws-pink rounded p-2"
             onClick={() => {
               moveSteps("back");
             }}
@@ -74,7 +75,8 @@ export default function MainForm() {
         </li>
         <li className={`${formSteps >= 2 ? "hidden" : "block"}`}>
           <button
-            className="border-2 border-black m-2 hover:text-ws-pink hover:border-ws-pink rounded p-2"
+            className="border-2 border-black m-2 hover:text-ws-pink 
+            active:border-ws-green hover:border-ws-pink active:text-ws-green rounded p-2"
             onClick={() => {
               moveSteps("forward");
             }}
