@@ -18,6 +18,10 @@ export default function MainForm() {
     companySite: "",
     // Showcase data
     showcase: "",
+    billingName: "",
+    billingAddress: "",
+    billingEmail: "",
+    billingPhone: "",
     size: 0,
     carte: [],
   });

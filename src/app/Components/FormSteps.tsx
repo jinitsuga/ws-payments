@@ -231,7 +231,6 @@ export const PaymentForm = ({ formData }: any) => {
   const total = formData.size.value + cartePrice(formData);
   console.log(total);
   return (
-    //lol qwewqqweqweqwweEWWEas
     <>
       <Script
         onLoad={() => {
