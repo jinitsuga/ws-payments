@@ -25,9 +25,27 @@ export async function POST(req: NextRequest) {
     }
   };
 
-  const sizeCheck = checkSize();
+  const checkCarteOptions = () => {
+    let answer: boolean = true;
+    for (let i = 0; i < formData.carte.length; i++) {
+      const option = formData.carte[i];
+      const realOption = carteOptions.find(
+        (carteOption) => carteOption.name === option.name
+      );
+      if (!realOption?.value === option.value) {
+        answer = false;
+        break;
+      }
+    }
+    return answer;
+  };
 
-  if (!sizeCheck) return;
+  const sizeCheck = checkSize();
+  const carteCheck = checkCarteOptions();
+
+  if (!sizeCheck || !carteCheck) {
+    console.log("information toyed with");
+  }
 
   const totalPayment = cartePrice(formData) + formData.size.value;
   const idemKey = crypto.randomUUID();
