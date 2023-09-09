@@ -1,6 +1,6 @@
 "use client";
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import Input, { RadioInput, CheckboxInput } from "./Input";
+import Input, { RadioInput, CheckboxInput, ShowcaseInput } from "./Input";
 import Script from "next/script";
 import { cartePrice } from "@/utils/utils";
 import { carteOptions } from "@/utils/carteOptions";
@@ -109,10 +109,52 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
     );
   });
 
+  const Span: React.FC<any> = ({ text }) => {
+    return (
+      <span className="row-start-1 col-span-1 p-1 text-center text-lg border-[1px]">
+        {text}
+      </span>
+    );
+  };
+
   return (
     <>
       <h2 className="mb-2 text-3xl">Showcase information</h2>
-      <label className="flex flex-col text-xl gap-1" htmlFor="showcase">
+      <div className="grid auto-cols-auto">
+        <Span text="Show" />
+        <Span text="Artist" />
+        <Span text='36" Table' />
+        <Span text="4FT Table" />
+        <Span text="6FT Booth" />
+        <Span text="9FT Booth" />
+        <Span text="12FT Booth" />
+        <ShowcaseInput
+          formData={formData}
+          inputName="showcasesLaOct"
+          setter={setter}
+          show="Los Angeles, October 9th"
+        />
+        <ShowcaseInput
+          formData={formData}
+          inputName="showcasesNyNov"
+          setter={setter}
+          show="New York, November 13th"
+        />
+        <ShowcaseInput
+          formData={formData}
+          inputName="showcasesNyJan"
+          setter={setter}
+          show="New York, January 29th"
+        />
+        <ShowcaseInput
+          formData={formData}
+          inputName="showcasesLaFeb"
+          setter={setter}
+          show="Los Angeles, February 19th"
+        />
+      </div>
+      {
+        /* <label className="flex flex-col text-xl gap-1" htmlFor="showcase">
         {"Show you're registering for:"}
         <select
           onChange={(e: React.FormEvent<HTMLSelectElement>) => {
@@ -149,11 +191,12 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
         Exhibitor space to purchase:
         <div className="flex flex-wrap gap-4 my-4">{exhibitorSizes}</div>
       </fieldset>
-
-      <fieldset className="text-xl mt-2 flex-wrap">
-        A la carte options:
-        <div className="mt-4">{alacarteOptions}</div>
-      </fieldset>
+*/
+        <fieldset className="text-xl mt-2 flex-wrap">
+          A la carte options:
+          <div className="mt-4">{alacarteOptions}</div>
+        </fieldset>
+      }
     </>
   );
 };

@@ -67,7 +67,7 @@ export const RadioInput = ({
     });
   };
   return (
-    <div className="flex text-xl">
+    <div className="flex text-lg border-ws-pink border-[1px]">
       <label
         className="flex gap-1 hover:cursor-pointer checked:text-4xl border-ws-green outline-ws-green p-2"
         htmlFor={id}
@@ -76,7 +76,7 @@ export const RadioInput = ({
           onChange={(e) => {
             updateData(e);
           }}
-          className="h-8 w-8 checked:accent-ws-green hover:cursor-pointer"
+          className="h-6 w-6 checked:accent-ws-green hover:cursor-pointer"
           type="radio"
           name={inputName}
           value={value}
@@ -85,6 +85,74 @@ export const RadioInput = ({
         {labelText}
       </label>
     </div>
+  );
+};
+
+type showcaseTypes = {
+  inputName: string;
+  setter: Function;
+  formData: any;
+  show: string;
+};
+
+export const ShowcaseInput = ({
+  inputName,
+  setter,
+  formData,
+  show,
+}: showcaseTypes) => {
+  return (
+    <>
+      <span className="text-left text-lg border-2 p-2">{show}</span>
+      <RadioInput
+        inputName={inputName}
+        labelText={"$1750"}
+        value={1750}
+        setter={setter}
+        id={"Artist"}
+        formData={formData}
+      />
+      <RadioInput
+        inputName={inputName}
+        labelText={"$2950"}
+        value={2950}
+        setter={setter}
+        id={'36" Table'}
+        formData={formData}
+      />
+      <RadioInput
+        inputName={inputName}
+        labelText={"$3950"}
+        value={3950}
+        setter={setter}
+        id={"4FT Table"}
+        formData={formData}
+      />
+      <RadioInput
+        inputName={inputName}
+        labelText={"$5490"}
+        value={5490}
+        setter={setter}
+        id={"6FT Booth"}
+        formData={formData}
+      />
+      <RadioInput
+        inputName={inputName}
+        labelText={"$8240"}
+        value={8240}
+        setter={setter}
+        id={"9FT Booth"}
+        formData={formData}
+      />
+      <RadioInput
+        inputName={inputName}
+        labelText={"$10715"}
+        value={10715}
+        setter={setter}
+        id={"12FT Booth"}
+        formData={formData}
+      />
+    </>
   );
 };
 

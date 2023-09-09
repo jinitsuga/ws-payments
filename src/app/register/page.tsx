@@ -9,8 +9,11 @@ export default function Register() {
           Wedding Salon
         </span>
       </h2>
-      <section className="flex flex-col md:flex-row shadow-md shadow-ws-green gap-2 max-w-[900px]  bg-white rounded-lg">
-        <div className="rounded min-w-[60%] md:max-w-[90%]  max-w-[100%] p-4">
+      <section
+        className="flex flex-col md:flex-row shadow-md shadow-ws-green gap-2 
+     items-center justify-start p-4 lg:min-w-[600px] bg-white rounded-lg"
+      >
+        <div className="rounded min-w-[60%] md:max-w-[100%]  max-w-[100%] p-4">
           <MainForm />
         </div>
         {/* <hr className="md:hidden bg-black h-1"></hr>

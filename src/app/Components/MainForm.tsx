@@ -18,12 +18,14 @@ export default function MainForm() {
     companySite: "",
     socials: "",
     // Showcase data
-    showcase: "",
+    showcasesLaOct: "",
+    showcasesNyNov: "",
+    showcasesNyJan: "",
+    showcasesLaFeb: "",
     billingName: "",
     billingAddress: "",
     billingEmail: "",
     billingPhone: "",
-    size: 0,
     carte: [],
   });
   const [formSteps, setFormSteps] = useState<number>(0);
