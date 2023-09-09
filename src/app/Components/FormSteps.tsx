@@ -20,10 +20,10 @@ type FormProps = {
 export const CompanyForm = ({ setter, formData }: FormProps) => {
   return (
     <>
-      <h3 className="mb-2 text-3xl">Tell us about your company</h3>
+      <h3 className="mb-2 text-3xl">Company information</h3>
       <Input
         inputName="companyName"
-        labelText="Your company's name:"
+        labelText="Company Name:"
         inputType="text"
         placeholder="Google"
         setter={setter}
@@ -32,7 +32,7 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
       />
       <Input
         inputName="repName"
-        labelText="Representative's name:"
+        labelText="Contact name:"
         inputType="text"
         placeholder="Jane Smith"
         setter={setter}
@@ -41,7 +41,7 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
       />
       <Input
         inputName="repEmail"
-        labelText="Representative's email:"
+        labelText="Contact's email:"
         inputType="email"
         placeholder="john@google.com"
         setter={setter}
@@ -59,9 +59,18 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
       />
       <Input
         inputName="companySite"
-        labelText="Website / social media:"
+        labelText="Website"
         inputType="text"
         placeholder="https://www.nike.com/"
+        setter={setter}
+        formData={formData}
+        req
+      />
+      <Input
+        inputName="socials"
+        labelText="Social Media"
+        inputType="text"
+        placeholder="instagram, twitter, etc"
         setter={setter}
         formData={formData}
         req

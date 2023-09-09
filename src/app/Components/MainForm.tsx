@@ -16,6 +16,7 @@ export default function MainForm() {
     repEmail: "",
     category: "",
     companySite: "",
+    socials: "",
     // Showcase data
     showcase: "",
     billingName: "",

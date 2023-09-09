@@ -10,10 +10,10 @@ export default function Register() {
         </span>
       </h2>
       <section className="flex flex-col md:flex-row shadow-md shadow-ws-green gap-2 max-w-[900px]  bg-white rounded-lg">
-        <div className="rounded min-w-[60%] md:max-w-[70%]  max-w-[100%] p-4">
+        <div className="rounded min-w-[60%] md:max-w-[90%]  max-w-[100%] p-4">
           <MainForm />
         </div>
-        <hr className="md:hidden bg-black h-1"></hr>
+        {/* <hr className="md:hidden bg-black h-1"></hr>
         <div className="p-4 border-l-4 md:max-w-[30%] max-w-[70%] text-left pl-8">
           <h3 className="text-xl mb-4">
             <strong className="text-ws-green">Every space size </strong>includes
@@ -26,7 +26,7 @@ export default function Register() {
             <li className="mb-4">Raffle promotions</li>
             <li>Website vendor profile</li>
           </ul>
-        </div>
+        </div> */}
       </section>
     </main>
   );
