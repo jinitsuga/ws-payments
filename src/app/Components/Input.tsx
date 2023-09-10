@@ -67,7 +67,7 @@ export const RadioInput = ({
     });
   };
   return (
-    <div className="flex items-center border-b-2 p-1 border-r-2 hover:bg-pink-100 text-lg ">
+    <div className="flex items-center justify-center border-b-2 p-1 border-r-2 hover:bg-pink-100 text-lg ">
       <input
         onChange={(e) => {
           updateData(e);

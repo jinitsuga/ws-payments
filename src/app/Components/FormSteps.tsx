@@ -32,7 +32,7 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
       />
       <Input
         inputName="repName"
-        labelText="Contact name:"
+        labelText="Contact Name:"
         inputType="text"
         placeholder="Jane Smith"
         setter={setter}
@@ -41,7 +41,7 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
       />
       <Input
         inputName="repEmail"
-        labelText="Contact's email:"
+        labelText="Contact Email:"
         inputType="email"
         placeholder="john@google.com"
         setter={setter}
@@ -90,21 +90,6 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
         key={id}
         id={option.name}
         value={option.value}
-      />
-    );
-  });
-
-  const exhibitorSizes = sizes.map((option, id) => {
-    return (
-      <RadioInput
-        formData={formData}
-        setter={setter}
-        id={option.name}
-        key={id}
-        inputName="size"
-        labelText={option.name}
-        value={option.value}
-        req
       />
     );
   });
@@ -210,7 +195,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
       </div>
       <fieldset className="text-xl mt-2 flex-wrap">
         A la carte options:
-        <div className="flex flex-wrap max-w-[700px] mt-4">
+        <div className="flex flex-wrap max-w-[700px] mt-1">
           {alacarteOptions}
         </div>
       </fieldset>
