@@ -120,7 +120,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
   return (
     <>
       <h2 className="mb-2 text-3xl">Showcase information</h2>
-      <div className="grid auto-cols-auto">
+      <div className="grid auto-cols-auto mb-4">
         <Span text="Show" />
         <Span text="Artist" />
         <Span text='36" Table' />
@@ -153,8 +153,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
           show="Los Angeles, February 19th"
         />
       </div>
-      {
-        /* <label className="flex flex-col text-xl gap-1" htmlFor="showcase">
+      {/* <label className="flex flex-col text-xl gap-1" htmlFor="showcase">
         {"Show you're registering for:"}
         <select
           onChange={(e: React.FormEvent<HTMLSelectElement>) => {
@@ -191,12 +190,30 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
         Exhibitor space to purchase:
         <div className="flex flex-wrap gap-4 my-4">{exhibitorSizes}</div>
       </fieldset>
-*/
-        <fieldset className="text-xl mt-2 flex-wrap">
-          A la carte options:
-          <div className="mt-4">{alacarteOptions}</div>
-        </fieldset>
-      }
+*/}
+      <div className="p-2 border-2 border-black">
+        <p className="text-[18px]">
+          The following benefits are included for all sizes:{" "}
+          <strong className="text-ws-green font-[600]">
+            Social Media Mentions, Database of opted-in Guests, Raffle
+            Promotions, Website Vendor Profile
+          </strong>
+        </p>
+      </div>
+      <div className="p-2 border-2 bg-pink-100 border-black">
+        <p className="text-[18px]">
+          Multi-Show Discount: 2 shows ={" "}
+          <strong className="text-ws-green text-[20px]">5%</strong> off 3 shows
+          = <strong className="text-ws-green text-[20px]">7.5%</strong> off 4
+          shows = <strong className="text-ws-green text-[20px]">10%</strong> off
+        </p>
+      </div>
+      <fieldset className="text-xl mt-2 flex-wrap">
+        A la carte options:
+        <div className="flex flex-wrap max-w-[700px] mt-4">
+          {alacarteOptions}
+        </div>
+      </fieldset>
     </>
   );
 };

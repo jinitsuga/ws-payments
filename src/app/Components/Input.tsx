@@ -78,7 +78,7 @@ export const RadioInput = ({
         value={value}
         id={id}
       />
-      <label className="flex gap-1 hover:cursor-pointer checked:text-4xl border-ws-green outline-ws-green p-2">
+      <label className="flex gap-1   checked:text-4xl border-ws-green outline-ws-green p-2">
         {labelText}
       </label>
     </div>
@@ -213,7 +213,7 @@ export const CheckboxInput = ({
           value={value}
           id={id}
         />
-        {labelText}
+        {labelText + " $" + value}
       </label>
     </div>
   );
