@@ -111,7 +111,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
 
   const Span: React.FC<any> = ({ text }) => {
     return (
-      <span className="row-start-1 col-span-1 p-1 text-center text-lg border-[1px]">
+      <span className="row-start-1 font-[600] col-span-1 p-1 text-center text-lg border-[1px]">
         {text}
       </span>
     );

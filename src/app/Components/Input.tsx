@@ -67,21 +67,18 @@ export const RadioInput = ({
     });
   };
   return (
-    <div className="flex text-lg border-ws-pink border-[1px]">
-      <label
-        className="flex gap-1 hover:cursor-pointer checked:text-4xl border-ws-green outline-ws-green p-2"
-        htmlFor={id}
-      >
-        <input
-          onChange={(e) => {
-            updateData(e);
-          }}
-          className="h-6 w-6 checked:accent-ws-green hover:cursor-pointer"
-          type="radio"
-          name={inputName}
-          value={value}
-          id={id}
-        />
+    <div className="flex items-center border-b-2 p-1 border-r-2 hover:bg-pink-100 text-lg ">
+      <input
+        onChange={(e) => {
+          updateData(e);
+        }}
+        className="h-6 w-6 checked:accent-ws-green hover:cursor-pointer"
+        type="radio"
+        name={inputName}
+        value={value}
+        id={id}
+      />
+      <label className="flex gap-1 hover:cursor-pointer checked:text-4xl border-ws-green outline-ws-green p-2">
         {labelText}
       </label>
     </div>
@@ -103,7 +100,9 @@ export const ShowcaseInput = ({
 }: showcaseTypes) => {
   return (
     <>
-      <span className="text-left text-lg border-2 p-2">{show}</span>
+      <span className="text-left text-lg border-b-2 border-x-2 font-[600] p-2">
+        {show}
+      </span>
       <RadioInput
         inputName={inputName}
         labelText={"$1750"}
