@@ -301,6 +301,11 @@ export const PaymentForm = ({ formData }: any) => {
         }}
         src="https://sandbox.web.squarecdn.com/v1/square.js"
       />
+      <div>
+        <p className="text-[16px] text-red-400">
+          *Please Note All Credit Card Payments Incur A 3% Processing Fee
+        </p>
+      </div>
       <h4 className="text-xl mt-2">Card details</h4>
       <div className="mt-4" id="card"></div>
       <span className="self-center mb-4">Total: ${total}</span>
