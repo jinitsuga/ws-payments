@@ -211,16 +211,16 @@ export const BillingForm = ({ setter, formData }: FormProps) => {
         formData={formData}
         inputName="billingName"
         inputType="text"
-        labelText="Billing contact name"
+        labelText="Billing Contact Name"
         req
         setter={setter}
-        placeholder="Charles"
+        placeholder="Charles Darwin"
       />
       <Input
         formData={formData}
         inputName="billingAddress"
         inputType="text"
-        labelText="Billing address"
+        labelText="Billing Address"
         req
         setter={setter}
       />
@@ -228,7 +228,7 @@ export const BillingForm = ({ setter, formData }: FormProps) => {
         formData={formData}
         inputName="billingEmail"
         inputType="email"
-        labelText="Billing contact email"
+        labelText="Billing Contact Email"
         req
         setter={setter}
         placeholder="jane@google.com"
@@ -237,7 +237,7 @@ export const BillingForm = ({ setter, formData }: FormProps) => {
         formData={formData}
         inputName="billingPhone"
         inputType="tel"
-        labelText="Billing contact phone"
+        labelText="Billing Contact Phone"
         req
         setter={setter}
         placeholder="+1 999 451 924"
@@ -306,7 +306,7 @@ export const PaymentForm = ({ formData }: any) => {
           *Please Note All Credit Card Payments Incur A 3% Processing Fee
         </p>
       </div>
-      <h4 className="text-xl mt-2">Card details</h4>
+      <h4 className="text-xl mt-2">Card Details</h4>
       <div className="mt-4" id="card"></div>
       <span className="self-center mb-4">Total: ${total}</span>
       <button
