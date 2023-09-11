@@ -188,8 +188,8 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
       <div className="p-2 border-2 bg-pink-100 border-black">
         <p className="text-[18px]">
           Multi-Show Discount: 2 shows ={" "}
-          <strong className="text-ws-green text-[20px]">5%</strong> off 3 shows
-          = <strong className="text-ws-green text-[20px]">7.5%</strong> off 4
+          <strong className="text-ws-green text-[20px]">5%</strong> off, 3 shows
+          = <strong className="text-ws-green text-[20px]">7.5%</strong> off, 4
           shows = <strong className="text-ws-green text-[20px]">10%</strong> off
         </p>
       </div>
@@ -282,8 +282,16 @@ export const PaymentForm = ({ formData }: any) => {
     }
   };
 
-  const total = formData.size.value + cartePrice(formData);
-  console.log(total);
+  const total =
+    cartePrice({
+      carte: [
+        formData.showcasesLaOct,
+        formData.showcasesNyJan,
+        formData.showcasesNyNov,
+        formData.showcasesLaFeb,
+      ],
+    }) + cartePrice(formData);
+
   return (
     <>
       <Script
