@@ -6,6 +6,11 @@ import {
   BillingForm,
   PaymentForm,
 } from "./FormSteps";
+// SHow client the discounted amount next to total
+// Code field for discounts
+// Admin fee 3%
+// wire transfer option, capitalize a la carte options, and make a grid
+// Email notificatiosn: concierge@weddingsalon + their email
 
 // All of the form logic goes in this component
 export default function MainForm() {
@@ -27,6 +32,7 @@ export default function MainForm() {
     billingEmail: "",
     billingPhone: "",
     carte: [],
+    discount: "",
   });
   const [formSteps, setFormSteps] = useState<number>(0);
 
@@ -60,7 +66,7 @@ export default function MainForm() {
         {formSteps == 2 && (
           <>
             <BillingForm setter={setFormData} formData={formData} />
-            <PaymentForm formData={formData} />
+            <PaymentForm formData={formData} setter={setFormData} />
           </>
         )}
       </form>

@@ -9,6 +9,7 @@ type InputTypes = {
   req: boolean;
   setter: Function;
   formData: any;
+  short?: boolean;
 };
 type RadioTypes = {
   inputName: string;
@@ -29,6 +30,7 @@ export default function Input({
   formData,
   value,
   req,
+  short,
 }: InputTypes) {
   const updateData = (e: React.FormEvent<HTMLInputElement>) => {
     setter({ ...formData, [inputName]: e.currentTarget.value });
@@ -38,7 +40,9 @@ export default function Input({
     <label className="flex flex-col text-lg gap-1" htmlFor={inputName}>
       {labelText}
       <input
-        className="rounded bg-stone-100 max-w-[100%] p-2 outline-ws-green"
+        className={`rounded bg-stone-100 ${
+          short ? "max-w-[50%]" : `max-w-[100%]`
+        } p-2 outline-ws-green`}
         required={req}
         onChange={(e) => {
           updateData(e);
@@ -213,7 +217,7 @@ export const CheckboxInput = ({
           value={value}
           id={id}
         />
-        {labelText + " $" + value}
+        {labelText + ": $" + value}
       </label>
     </div>
   );

@@ -11,7 +11,7 @@ export default function Register() {
       </h2>
       <section
         className="flex flex-col md:flex-row shadow-md shadow-ws-green gap-2 
-     items-center justify-start p-4 lg:min-w-[600px] bg-white rounded-lg"
+     items-center justify-start p-4  bg-white rounded-lg"
       >
         <div className="rounded min-w-[60%] md:max-w-[100%]  max-w-[100%] p-4">
           <MainForm />

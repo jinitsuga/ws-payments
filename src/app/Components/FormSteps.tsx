@@ -195,7 +195,7 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
       </div>
       <fieldset className="text-xl mt-2 flex-wrap">
         A la carte options:
-        <div className="flex flex-wrap max-w-[700px] mt-1">
+        <div className="grid grid-cols-2 max-w-[700px] mt-1">
           {alacarteOptions}
         </div>
       </fieldset>
@@ -246,7 +246,7 @@ export const BillingForm = ({ setter, formData }: FormProps) => {
   );
 };
 
-export const PaymentForm = ({ formData }: any) => {
+export const PaymentForm = ({ setter, formData }: FormProps) => {
   const [isSquareLoaded, setIsSquareLoaded] = useState<boolean>(false);
   const [card, setCard] = useState<any>(null);
 
@@ -282,6 +282,9 @@ export const PaymentForm = ({ formData }: any) => {
     }
   };
 
+  // Calculate multi-show discount
+  // Server side price validation
+
   const total =
     cartePrice({
       carte: [
@@ -303,11 +306,22 @@ export const PaymentForm = ({ formData }: any) => {
       />
       <div>
         <p className="text-[16px] text-red-400">
-          *Please Note All Credit Card Payments Incur A 3% Processing Fee
+          *Please Note All Credit Card Payments Incur A 3% Admin Fee
         </p>
       </div>
       <h4 className="text-xl mt-2">Card Details</h4>
       <div className="mt-4" id="card"></div>
+      <Input
+        labelText="Discount Code"
+        inputType="text"
+        inputName="discount"
+        placeholder="If one was provided"
+        setter={setter}
+        formData={formData}
+        req={false}
+        short={true}
+      ></Input>
+
       <span className="self-center mb-4">Total: ${total}</span>
       <button
         className="p-4 font-bold rounded active:scale-110 active:bg-ws-pink active:text-black bg-teal-500 text-3xl text-center w-3/4 self-center mb-4 hover:text-ws-pink hover:bg-teal-400"
