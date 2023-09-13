@@ -2,7 +2,7 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import Input, { RadioInput, CheckboxInput, ShowcaseInput } from "./Input";
 import Script from "next/script";
-import { cartePrice } from "@/utils/utils";
+import { cartePrice, calcDiscount } from "@/utils/utils";
 import { carteOptions } from "@/utils/carteOptions";
 import { sizes } from "@/utils/sizes";
 
@@ -138,44 +138,6 @@ export const ShowcaseForm = ({ setter, formData }: FormProps) => {
           show="Los Angeles, February 19th"
         />
       </div>
-      {/* <label className="flex flex-col text-xl gap-1" htmlFor="showcase">
-        {"Show you're registering for:"}
-        <select
-          onChange={(e: React.FormEvent<HTMLSelectElement>) => {
-            setter({ ...formData, ["showcase"]: e.currentTarget.value });
-          }}
-          className="p-2 outline-ws-pink text-xl max-w-[350px] "
-          name="showcase"
-        >
-          <option className="p-2 hover:bg-ws-pink" value="">
-            Select a show
-          </option>
-          <option
-            className="p-2 h-12 border-2 border-ws-green text-2xl  bg-ws-pink"
-            value="October 9th, LA"
-          >
-            October 9th, Los Angeles
-          </option>
-          <option
-            className="p-2 h-12 border-4 border-black text-2xl  bg-ws-pink"
-            value="November 13th, NY"
-          >
-            November 13th, New York
-          </option>
-          <option
-            className="p-2 h-12 border-4 border-black text-2xl  bg-ws-pink"
-            value="January 29th, NY"
-          >
-            January 29th, New York (2024)
-          </option>
-        </select>
-      </label>
-
-      <fieldset className="text-xl  flex-wrap ">
-        Exhibitor space to purchase:
-        <div className="flex flex-wrap gap-4 my-4">{exhibitorSizes}</div>
-      </fieldset>
-*/}
       <div className="p-2 border-2 border-black">
         <p className="text-[18px]">
           The following benefits are included for all sizes:{" "}
@@ -276,7 +238,7 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ formData, token }),
-      });
+      }).then(() => console.log("payment sent"));
     } else {
       console.error(tokenResult.errors);
     }
@@ -284,6 +246,8 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
 
   // Calculate multi-show discount
   // Server side price validation
+
+  const discountFromShows = calcDiscount(formData.showsCart);
 
   const total =
     cartePrice({
@@ -295,6 +259,11 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
       ],
     }) + cartePrice(formData);
 
+  console.log(
+    "DISCOUNTED",
+    discountFromShows + "%",
+    total - (total * discountFromShows) / 100
+  );
   return (
     <>
       <Script
@@ -322,7 +291,7 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
         short={true}
       ></Input>
 
-      <span className="self-center mb-4">Total: ${total}</span>
+      <span className="self-center my-4">Total: ${total}</span>
       <button
         className="p-4 font-bold rounded active:scale-110 active:bg-ws-pink active:text-black bg-teal-500 text-3xl text-center w-3/4 self-center mb-4 hover:text-ws-pink hover:bg-teal-400"
         onClick={(e: SyntheticEvent) => {

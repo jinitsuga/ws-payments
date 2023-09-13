@@ -68,6 +68,7 @@ export const RadioInput = ({
     setter({
       ...formData,
       [inputName]: { name: id, value: Number(e.currentTarget.value) },
+      showsCart: [...formData.showsCart, value],
     });
   };
   return (

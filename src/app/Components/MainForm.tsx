@@ -32,6 +32,7 @@ export default function MainForm() {
     billingEmail: "",
     billingPhone: "",
     carte: [],
+    showsCart: [],
     discount: "",
   });
   const [formSteps, setFormSteps] = useState<number>(0);
