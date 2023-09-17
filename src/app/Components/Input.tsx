@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 type InputTypes = {
   inputName: string;
   placeholder?: string;
@@ -19,6 +17,15 @@ type RadioTypes = {
   setter: Function;
   id: string;
   formData: any;
+};
+
+type Dropdown = {
+  options: string[];
+  inputName: string;
+  labelText: string;
+  setter: Function;
+  formData: any;
+  req: boolean;
 };
 
 export default function Input({
@@ -221,5 +228,41 @@ export const CheckboxInput = ({
         {labelText + ": $" + value}
       </label>
     </div>
+  );
+};
+
+export const Dropdown = ({
+  inputName,
+  labelText,
+  formData,
+  setter,
+  options,
+  req,
+}: Dropdown) => {
+  const updateData = (e: any) => {
+    console.log(e.target.value);
+  };
+
+  const selectOptions = options.map((option, id) => {
+    return (
+      <option key={id} value={option}>
+        {option}
+      </option>
+    );
+  });
+  return (
+    <>
+      <label htmlFor="category">{labelText}</label>
+      <select
+        id="category"
+        onChange={(e) => {
+          updateData(e);
+        }}
+        name={inputName}
+      >
+        <option value="">Choose a category...</option>
+        {selectOptions}
+      </select>
+    </>
   );
 };

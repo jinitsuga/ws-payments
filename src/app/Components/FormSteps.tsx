@@ -1,9 +1,14 @@
 "use client";
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import Input, { RadioInput, CheckboxInput, ShowcaseInput } from "./Input";
+import Input, {
+  RadioInput,
+  CheckboxInput,
+  ShowcaseInput,
+  Dropdown,
+} from "./Input";
 import Script from "next/script";
 import { cartePrice, calcDiscount } from "@/utils/utils";
-import { carteOptions } from "@/utils/carteOptions";
+import { carteOptions, categories } from "@/utils/carteOptions";
 import { sizes } from "@/utils/sizes";
 
 declare global {
@@ -57,6 +62,14 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
         formData={formData}
         req
       />
+      <Dropdown
+        formData={formData}
+        inputName="cat"
+        labelText={"Industry Category"}
+        options={categories}
+        req={true}
+        setter={setter}
+      ></Dropdown>
       <Input
         inputName="companySite"
         labelText="Website"
