@@ -243,6 +243,7 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
         body: JSON.stringify({ formData, token }),
       }).then(() => console.log("payment sent"));
     } else {
+      console.log("error in payment");
       console.error(tokenResult.errors);
     }
   };

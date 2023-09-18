@@ -9,7 +9,7 @@ export const cartePrice = (data: any) => {
 };
 
 export const calcDiscount = (arr: Array<Show | "">) => {
-  let numberOfShows = 0;
+  let numberOfShows = -1;
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] !== "") numberOfShows++;
