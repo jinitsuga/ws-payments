@@ -1,15 +1,9 @@
 "use client";
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import Input, {
-  RadioInput,
-  CheckboxInput,
-  ShowcaseInput,
-  Dropdown,
-} from "./Input";
+import Input, { CheckboxInput, ShowcaseInput, Dropdown } from "./Input";
 import Script from "next/script";
 import { cartePrice, calcDiscount } from "@/utils/utils";
 import { carteOptions, categories } from "@/utils/carteOptions";
-import { sizes } from "@/utils/sizes";
 
 declare global {
   interface Window {
@@ -20,6 +14,11 @@ declare global {
 type FormProps = {
   setter: Function;
   formData: any;
+};
+
+export type Show = {
+  name: string;
+  value: number;
 };
 
 export const CompanyForm = ({ setter, formData }: FormProps) => {
@@ -53,18 +52,9 @@ export const CompanyForm = ({ setter, formData }: FormProps) => {
         formData={formData}
         req
       />
-      <Input
-        inputName="category"
-        labelText="Industry Category:"
-        inputType="text"
-        placeholder="Catering, photography, venues, etc"
-        setter={setter}
-        formData={formData}
-        req
-      />
       <Dropdown
         formData={formData}
-        inputName="cat"
+        inputName="category"
         labelText={"Industry Category"}
         options={categories}
         req={true}
@@ -260,7 +250,12 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
   // Calculate multi-show discount
   // Server side price validation
 
-  const discountFromShows = calcDiscount(formData.showsCart);
+  const discountFromShows = calcDiscount([
+    formData.showcasesLaOct,
+    formData.showcasesNyJan,
+    formData.showcasesNyNov,
+    formData.showcasesLaFeb,
+  ]);
 
   const total =
     cartePrice({
@@ -304,7 +299,9 @@ export const PaymentForm = ({ setter, formData }: FormProps) => {
         short={true}
       ></Input>
 
-      <span className="self-center my-4">Total: ${total}</span>
+      <span className="self-center my-4">
+        Total: ${total - (total * discountFromShows) / 100}
+      </span>
       <button
         className="p-4 font-bold rounded active:scale-110 active:bg-ws-pink active:text-black bg-teal-500 text-3xl text-center w-3/4 self-center mb-4 hover:text-ws-pink hover:bg-teal-400"
         onClick={(e: SyntheticEvent) => {

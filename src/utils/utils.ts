@@ -1,28 +1,37 @@
+import { type Show } from "@/app/Components/FormSteps";
+
 export const cartePrice = (data: any) => {
   let carteTotal = 0;
-  data.carte.map((item: any) => {
+  data.carte.map((item: Show) => {
     if (item.value) carteTotal = carteTotal + item.value;
   });
   return carteTotal;
 };
 
-export const calcDiscount = (arr: Array<number>) => {
-  let percent = 0;
-  switch (arr.length) {
+export const calcDiscount = (arr: Array<Show | "">) => {
+  let numberOfShows = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== "") numberOfShows++;
+  }
+
+  let percentDiscount = 0;
+
+  switch (numberOfShows) {
     case 0:
-      percent = 0;
+      percentDiscount = 0;
       break;
     case 1:
-      percent = 2.5;
+      percentDiscount = 2.5;
       break;
 
     case 2:
-      percent = 5;
+      percentDiscount = 5;
       break;
 
     case 3:
-      percent = 7.5;
+      percentDiscount = 7.5;
       break;
   }
-  return percent;
+  return percentDiscount;
 };

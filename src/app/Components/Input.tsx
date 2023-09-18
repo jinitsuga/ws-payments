@@ -75,7 +75,6 @@ export const RadioInput = ({
     setter({
       ...formData,
       [inputName]: { name: id, value: Number(e.currentTarget.value) },
-      showsCart: [...formData.showsCart, value],
     });
   };
   return (
@@ -241,6 +240,7 @@ export const Dropdown = ({
 }: Dropdown) => {
   const updateData = (e: any) => {
     console.log(e.target.value);
+    setter({ ...formData, [inputName]: e.target.value });
   };
 
   const selectOptions = options.map((option, id) => {
@@ -252,8 +252,11 @@ export const Dropdown = ({
   });
   return (
     <>
-      <label htmlFor="category">{labelText}</label>
+      <label className="text-lg" htmlFor="category">
+        {labelText}
+      </label>
       <select
+        className="text-lg"
         id="category"
         onChange={(e) => {
           updateData(e);
